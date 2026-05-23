@@ -45,11 +45,11 @@ flowchart LR
 
 ---
 
-## 📸 Screenshots
+<!-- ## 📸 Screenshots
 
 > *Add UI screenshots here.*
 
----
+--- -->
 
 ## 🛠️ Tech Stack
 
