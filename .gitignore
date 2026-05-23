@@ -1,0 +1,77 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.venv/
+venv/
+env/
+ENV/
+
+# FastAPI / logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# ChromaDB
+chroma/
+chromadb/
+data/chroma/
+
+# Vector stores
+vectorstore/
+vector_store/
+
+# Cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Frontend build
+dist/
+build/
+.next/
+out/
+
+# Docker
+docker-data/
+*.pid
+
+# Secrets
+*.pem
+*.key
+*.crt
+secrets/
+credentials.json
+
+# Temporary files
+tmp/
+temp/
+*.tmp

@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: rag-chromadb
+    volumes:
+      - chroma-data:/chroma/chroma
+    ports:
+      - "8001:8000"
+    environment:
+      - ANONYMIZED_TELEMETRY=False
+      - ALLOW_RESET=True
+    restart: unless-stopped
+    networks:
+      - rag-network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: rag-backend
+    volumes:
+      - sqlite-data:/app/data
+    ports:
+      - "8000:8000"
+    environment:
+      - PROJECT_NAME=RAG System
+      - DATABASE_URL=sqlite:////app/data/rag.db
+      - CHROMA_HOST=chromadb
+      - CHROMA_PORT=8000
+      - CHROMA_COLLECTION=rag_documents
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL}
+      - OPENAI_MODEL=${OPENAI_MODEL}
+    depends_on:
+      - chromadb
+    restart: unless-stopped
+    networks:
+      - rag-network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: rag-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - rag-network
+
+volumes:
+  chroma-data:
+  sqlite-data:
+
+networks:
+  rag-network:
+    driver: bridge
