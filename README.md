@@ -16,7 +16,7 @@ A **world‑class Retrieval‑Augmented Generation (RAG)** platform that lets yo
 
 - 📂 Multi‑format document support: PDF, DOCX, PPTX, XLSX, CSV, TXT, Markdown, HTML, JSON, OCR images
 - 🤖 Conversational memory with session‑based chat
-- 🔐 JWT authentication (register / login)
+<!-- - 🔐 JWT authentication (register / login) -->
 - 📊 Vector search powered by **ChromaDB**
 - 🧩 LangChain & LangGraph workflow orchestration
 - 🐳 Dockerised deployment (backend, frontend, ChromaDB)
@@ -172,8 +172,8 @@ docker compose up --build
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `POST` | `/auth/register` | Register a new user |
-| `POST` | `/auth/login` | Login and receive JWT |
+<!-- | `POST` | `/auth/register` | Register a new user |
+| `POST` | `/auth/login` | Login and receive JWT | -->
 | `POST` | `/documents/upload` | Upload a document |
 | `POST` | `/chat` | Query the RAG system |
 | `GET` | `/health` | System health check |
@@ -241,7 +241,7 @@ npm run test --prefix frontend
 
 ## 🔒 Security
 
-- JWT authentication with password hashing
+<!-- - JWT authentication with password hashing -->
 - Input validation via Pydantic
 - CORS configured (dev open, tighten for prod)
 
